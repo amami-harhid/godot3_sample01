@@ -6,7 +6,7 @@
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 18.9
 
-[node name="Player03" type="Node2D"]
+[node name="Player04" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="Body" type="RigidBody2D" parent="."]

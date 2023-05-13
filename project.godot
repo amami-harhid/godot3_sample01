@@ -104,7 +104,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="SampleTIleMap"
+config/name="Godot3Sample01"
 run/main_scene="res://resources/Main.tscn"
 config/icon="res://icon.png"
 
