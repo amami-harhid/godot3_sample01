@@ -7,7 +7,7 @@ onready var mainPlayingFieldNode:Node2D = $MainPlayingFieldNode
 var _commons:Commons = Commons.new()
 
 var _stage_level := -1
-const Stage_First_Level := 4
+const Stage_First_Level := 1
 const Stage_Max_Level := 4
 var _load_timer:Timer
 
