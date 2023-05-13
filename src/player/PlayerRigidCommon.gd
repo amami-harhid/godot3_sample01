@@ -59,16 +59,25 @@ func _key_check(_event:InputEvent):
 	if Input.is_action_just_pressed("ui_up"):
 		_move( Dir_Up )
 
+func _get_jump_impulse():
+	return Vector2(0,-400)
+
+func _get_slide_impulse_right():
+	return Vector2(100,-100)
+
+func _get_slide_impulse_left():
+	return Vector2(-100,-100)
+
 func _move(_dir:Vector2):
 	_change_frame_coords_y(_dir)
 
 	if _dir == Dir_Up:
 		if _is_touch_wall():
-			body.apply_central_impulse(Vector2(0,-400))
+			body.apply_central_impulse(_get_jump_impulse())
 	if _dir == Dir_Right:
-			body.apply_central_impulse(Vector2(100,-100))
+			body.apply_central_impulse(_get_slide_impulse_right())
 	if _dir == Dir_Left:
-			body.apply_central_impulse(Vector2(-100,-100))
+			body.apply_central_impulse(_get_slide_impulse_left())
 	
 	if _is_entered_door():
 		_sounds.stop_MusMus_BGM_090()

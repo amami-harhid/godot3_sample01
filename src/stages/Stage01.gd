@@ -21,6 +21,7 @@ func _load_enemy():
 	var _name:String = game.name
 	var _no:String = _name.replace(GameName,"")
 	var _scene:PackedScene = load(Enemy_Scene_Path%_no)
+	# 存在しないこともある
 	if _scene:
 		var _obj:Node2D = _scene.instance()
 		add_child(_obj)

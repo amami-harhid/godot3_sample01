@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/enemies.png" type="Texture" id=1]
-[ext_resource path="res://resources/Enemies/Enemy04.gd" type="Script" id=2]
+[ext_resource path="res://src/enemy/Enemy04.gd" type="Script" id=2]
+[ext_resource path="res://src/enemy/EnemyBody.gd" type="Script" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 36.71
@@ -9,11 +10,16 @@ radius = 36.71
 [node name="Enemy" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="Body" type="KinematicBody2D" parent="."]
+[node name="EnemyBody" type="RigidBody2D" parent="."]
+contacts_reported = 1
+contact_monitor = true
+script = ExtResource( 3 )
 
-[node name="Sprite" type="Sprite" parent="Body"]
+[node name="Sprite" type="Sprite" parent="EnemyBody"]
 texture = ExtResource( 1 )
 hframes = 9
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyBody"]
 shape = SubResource( 1 )
+
+[connection signal="body_entered" from="EnemyBody" to="EnemyBody" method="_on_Body_body_entered"]
