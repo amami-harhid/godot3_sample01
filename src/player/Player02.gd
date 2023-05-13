@@ -49,8 +49,10 @@ func _is_trick_cell(_cell:int)->bool:
 	
 func _trick(_pos:Vector2):
 	if _lever:
+		_sounds.play_Hit08_1()
 		tilemap.set_cell(_pos.x, _pos.y,tilemap.CELL_LEVER_ON)
 		tilemap.set_cell(4,6,tilemap.CELL_BUTTON_OFF)
 	if _button:
+		_sounds.play_Hit08_1()
 		tilemap.set_cell(_pos.x, _pos.y,tilemap.CELL_BUTTON_ON)
 		tilemap.set_cell(1,1,tilemap.CELL_DOOR)

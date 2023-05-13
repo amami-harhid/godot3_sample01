@@ -12,6 +12,12 @@ const Dir_Left := Vector2(-1,0)
 const Dir_Down := Vector2(0,1)
 const Dir_Up := Vector2(0,-1)
 
+var _sounds:Sounds = Sounds.new()
+
+func _init():
+	_sounds.load_sounds(self)
+	_sounds.play_MusMus_BGM_090()
+
 func _first_position(_map_pos:Vector2):
 	var _local_pos:Vector2 = _map_to_local(_map_pos)
 	body.position = _local_pos + Vector2(tilemap.Cell_X, tilemap.Cell_Y) / 2
@@ -65,6 +71,7 @@ func _move(_dir:Vector2):
 			body.apply_central_impulse(Vector2(-100,-100))
 	
 	if _is_entered_door():
+		_sounds.stop_MusMus_BGM_090()
 		main.load_next_stage()
 		
 func _escapable_cell(_dir:Vector2)->bool:

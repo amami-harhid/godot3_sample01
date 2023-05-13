@@ -7,7 +7,7 @@ const First_Position = Vector2(14,8)
 func _ready():
 	_first_position(First_Position)
 	_animation_start()
-
+	
 func _input(event:InputEvent):
 	if event is InputEventScreenTouch:
 		_touch_check(event)
@@ -27,5 +27,6 @@ func _is_trick_cell(_cell:int)->bool:
 
 const Door_Pos := Vector2(1,1)
 func _trick(_pos:Vector2):
+	_sounds.play_Hit08_1()
 	tilemap.set_cell(_pos.x, _pos.y,tilemap.CELL_LEVER_ON)
 	tilemap.set_cell(Door_Pos.x,Door_Pos.y,tilemap.CELL_DOOR)

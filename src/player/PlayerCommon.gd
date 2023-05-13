@@ -3,12 +3,19 @@ extends Node2D
 class_name PlayerCommon
 onready var main:Main = get_tree().root.get_node('Main')
 onready var tilemap:PlayingFieldTilemap = get_parent()
+
+var _sounds:Sounds = Sounds.new()
 var player = self
 
 const Dir_Right := Vector2(1,0)
 const Dir_Left := Vector2(-1,0)
 const Dir_Down := Vector2(0,1)
 const Dir_Up := Vector2(0,-1)
+
+func _init():
+	_sounds.load_sounds(self)
+	_sounds.play_MusMus_BGM_090()
+
 
 func _first_position(_map_pos:Vector2):
 	var _local_pos:Vector2 = _map_to_local(_map_pos)
@@ -66,14 +73,18 @@ func _move(_dir:Vector2):
 		if _next_cell > -1 :
 			_audio_play()
 			if tilemap.is_wall(_next_cell):
+				_sounds.play_Hit08_1()
 				_enable_walk = false
 		if _enable_walk :
 			player.position += _map_to_local(_dir)
 		if tilemap.is_door(_next_cell):
+			_sounds.play_Hit08_1()
 			_next_stage()
 		if _is_trick_cell(_next_cell):
 			_trick(_next_pos)
-	
+	else:
+		_sounds.play_Hit08_1()
+
 func _escapable_cell(_dir:Vector2)->bool:
 	return true
 
@@ -84,6 +95,7 @@ func _audio_play():
 	pass
 
 func _next_stage():
+	_sounds.stop_MusMus_BGM_090()
 	main.load_next_stage()
 
 func _is_trick_cell(_cell:int)->bool:

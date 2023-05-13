@@ -78,6 +78,11 @@ _global_script_classes=[ {
 "class": "PlayingFieldTilemapDetail",
 "language": "GDScript",
 "path": "res://src/playFieldTilemap/PlayingFileldTilemapDetail.gd"
+}, {
+"base": "Node",
+"class": "Sounds",
+"language": "GDScript",
+"path": "res://src/common/Sounds.gd"
 } ]
 _global_script_class_icons={
 "Commons": "",
@@ -93,7 +98,8 @@ _global_script_class_icons={
 "PlayerRigidSprite": "",
 "PlayerSprite": "",
 "PlayingFieldTilemap": "",
-"PlayingFieldTilemapDetail": ""
+"PlayingFieldTilemapDetail": "",
+"Sounds": ""
 }
 
 [application]
