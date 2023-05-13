@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Hit08-1.mp3-e2a29d52c589baefe4ea9eb6396482ab.mp3str"
+
+[deps]
+
+source_file="res://assets/Hit08-1.mp3"
+dest_files=[ "res://.import/Hit08-1.mp3-e2a29d52c589baefe4ea9eb6396482ab.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
