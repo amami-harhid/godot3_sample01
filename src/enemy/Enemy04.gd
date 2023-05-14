@@ -3,9 +3,13 @@ onready var main:Main = self.get_tree().root.get_node('Main')
 onready var body:RigidBody2D = $EnemyBody
 onready var sprite:Sprite = $EnemyBody/Sprite
 onready var collision:CollisionShape2D = $EnemyBody/CollisionShape2D
+
+signal atack_count_up(_atack_counter)
+
 func _ready():
-	body.sleeping = true
-	body.visible = false
+	yield(self.get_tree(), "idle_frame")
+#	body.sleeping = true
+#	body.visible = false
 	sprite.scale = Vector2(0.5,0.5)
 	collision.scale = sprite.scale
 	_timer()
@@ -24,15 +28,7 @@ func _clone_sprite():
 	var _position = Vector2(rand_range(64*2,64*17),64*2)
 	_clone.position = _position
 	add_child(_clone)
-	_clone.visible = true
-	_clone.sleeping = false
+	_clone._set_clone()
 	pass
 
-var _atack_count := 0
-func atack():
-	_atack_count+=1
-	print(_atack_count)
-	if _atack_count > 50:
-		main.load_next_stage()
-	
 		

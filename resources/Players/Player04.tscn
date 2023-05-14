@@ -20,5 +20,10 @@ vframes = 4
 position = Vector2( 1.5, 2 )
 shape = SubResource( 1 )
 
+[node name="RichTextLabel" type="RichTextLabel" parent="Body"]
+margin_left = 53.0
+margin_right = 161.0
+margin_bottom = 40.0
+
 [connection signal="body_shape_entered" from="Body" to="." method="_on_Body_body_shape_entered"]
 [connection signal="body_shape_exited" from="Body" to="." method="_on_Body_body_shape_exited"]

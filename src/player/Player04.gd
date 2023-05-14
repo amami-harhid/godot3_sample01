@@ -4,13 +4,23 @@ class_name Player04
 
 const First_Position = Vector2(1,5)
 
+onready var label:RichTextLabel = $Body/RichTextLabel
+
+var _atack_counter := 0
+
 func _ready():
 	body.gravity_scale = 10
 	body.contact_monitor = true
 	body.contacts_reported = 1
 	body.mode = body.MODE_CHARACTER
+	
+	
 	_first_position(First_Position)
 	_animation_start()
+
+func _process(delta):
+	label.text = "%03d"%_atack_counter
+	
 
 func _get_jump_impulse():
 	return Vector2(0,-800)
@@ -74,10 +84,13 @@ func _trick(_pos:Vector2):
 		tilemap.set_cell(1,1,tilemap.CELL_DOOR)
 
 
-
-
 func _on_Body_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	_touch_wall = true
+	if body.name == tilemap.name:
+		_touch_wall = true
+	if body.name.substr(1, "EnemyBody".length())=="EnemyBody":
+		_atack_counter+=1
+		if _atack_counter > 50:
+			main.load_next_stage()
 
 
 func _on_Body_body_shape_exited(body_rid, body, body_shape_index, local_shape_index):
