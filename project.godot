@@ -14,6 +14,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/common/Commons.gd"
 }, {
+"base": "RigidBody2D",
+"class": "EnemyBody",
+"language": "GDScript",
+"path": "res://src/enemy/EnemyBody.gd"
+}, {
+"base": "Node2D",
+"class": "EnemyScene",
+"language": "GDScript",
+"path": "res://src/enemy/Enemy04.gd"
+}, {
 "base": "GameDetail",
 "class": "Game",
 "language": "GDScript",
@@ -91,6 +101,8 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Commons": "",
+"EnemyBody": "",
+"EnemyScene": "",
 "Game": "",
 "GameCommon": "",
 "GameDetail": "",

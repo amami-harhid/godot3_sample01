@@ -1,11 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/enemies.png" type="Texture" id=1]
 [ext_resource path="res://src/enemy/Enemy04.gd" type="Script" id=2]
 [ext_resource path="res://src/enemy/EnemyBody.gd" type="Script" id=3]
+[ext_resource path="res://fonts/NicoMoji/NicoMoji-Regular.tres" type="DynamicFontData" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 36.71
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 4 )
 
 [node name="Enemy" type="Node2D"]
 script = ExtResource( 2 )
@@ -22,5 +26,11 @@ hframes = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyBody"]
 shape = SubResource( 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="EnemyBody"]
+margin_right = 40.0
+margin_bottom = 40.0
+custom_fonts/normal_font = SubResource( 2 )
+text = "0"
 
 [connection signal="body_entered" from="EnemyBody" to="EnemyBody" method="_on_EnemyBody_body_entered"]

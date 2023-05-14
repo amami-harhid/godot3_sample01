@@ -77,15 +77,24 @@ func _trick(_pos:Vector2):
 		tilemap.set_cell(_pos.x, _pos.y,tilemap.CELL_BUTTON_ON)
 		tilemap.set_cell(1,1,tilemap.CELL_DOOR)
 
-
+const Game_Clear_Point := 10
 func _on_Body_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
 	if body.name == tilemap.name:
 		_touch_wall = true
-	if body.name.substr(1, "EnemyBody".length())=="EnemyBody":
-		_atack_counter+=1
-		if _atack_counter > 50:
+		
+	if body is EnemyBody :
+		var _enemyBody:EnemyBody = body
+		var _point:int = _enemyBody.get_point()
+		_atack_counter += _point
+		if _atack_counter > Game_Clear_Point:
 			main.load_next_stage()
-
 
 func _on_Body_body_shape_exited(body_rid, body, body_shape_index, local_shape_index):
 	_touch_wall = false
+
+func push_point(_p:int):
+	_atack_counter -= _p
+	if _atack_counter < 0 :
+		_atack_counter = 0
+	
+	pass

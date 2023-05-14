@@ -1,4 +1,7 @@
 extends Node2D
+
+class_name EnemyScene
+
 onready var main:Main = self.get_tree().root.get_node('Main')
 onready var body:RigidBody2D = $EnemyBody
 onready var sprite:Sprite = $EnemyBody/Sprite
@@ -24,14 +27,12 @@ func _timer():
 	_timer.start()
 	
 var random = RandomNumberGenerator.new()
-const COLORS = [Color.green, Color.rebeccapurple,Color.aquamarine,Color.cadetblue,Color.chartreuse]
 func _clone_sprite():
 	var _clone:RigidBody2D = body.duplicate()
 	var _position = Vector2(rand_range(64*2,64*17),64*2)
 	_clone.position = _position
 	add_child(_clone)
-	var r = random.randi_range(1, COLORS.size())
-	var _color:Color = COLORS[r-1]
+	var _color = random.randi_range(0,_clone.COLORS.size()-1)  
 	_clone._set_clone(_color, random.randf_range(-10, 10))
 	pass
 
