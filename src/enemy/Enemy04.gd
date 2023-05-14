@@ -22,13 +22,17 @@ func _timer():
 	_timer.connect("timeout", self, "_clone_sprite")
 	add_child(_timer)
 	_timer.start()
-
+	
+var random = RandomNumberGenerator.new()
+const COLORS = [Color.green, Color.rebeccapurple,Color.aquamarine,Color.cadetblue,Color.chartreuse]
 func _clone_sprite():
 	var _clone:RigidBody2D = body.duplicate()
 	var _position = Vector2(rand_range(64*2,64*17),64*2)
 	_clone.position = _position
 	add_child(_clone)
-	_clone._set_clone()
+	var r = random.randi_range(1, COLORS.size())
+	var _color:Color = COLORS[r-1]
+	_clone._set_clone(_color, random.randf_range(-10, 10))
 	pass
 
 		

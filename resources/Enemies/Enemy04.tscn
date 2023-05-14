@@ -16,6 +16,7 @@ contact_monitor = true
 script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="EnemyBody"]
+scale = Vector2( 1.43103, 1.40625 )
 texture = ExtResource( 1 )
 hframes = 9
 

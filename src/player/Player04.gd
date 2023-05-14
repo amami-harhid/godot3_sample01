@@ -29,12 +29,6 @@ func _get_slide_impulse_right():
 func _get_slide_impulse_left():
 	return Vector2(-500,-200)
 
-#func _process(delta):
-#	print("player.position=",player.position)
-
-#func _physics_process(delta):
-#	print("player.position=",player.position)
-#	print("player.transform=",player.transform)
 
 func _input(event:InputEvent):
 	if event is InputEventScreenTouch:
